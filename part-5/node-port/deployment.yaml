@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-port
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      service: node-port
+  template:
+    metadata:
+      labels:
+        service: node-port
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80

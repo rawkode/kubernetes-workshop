@@ -1,0 +1,10 @@
+apiVersion: skaffold/v1beta5
+kind: Config
+build:
+  artifacts:
+    - image: skaffold-php
+      context: .
+  local: {}
+deploy:
+  kustomize:
+    path: ./opt/kubernetes/development

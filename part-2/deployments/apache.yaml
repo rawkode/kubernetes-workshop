@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd
+spec:
+  selector:
+    matchLabels:
+      app: httpd
+  template:
+    metadata:
+      labels:
+        app: httpd
+    spec:
+      containers:
+        - name: apache
+          image: httpd
+          resources:
+            limits:
+              memory: "1Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+spec:
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      volumes:
+        - name: data
+          emptyDir: {}
+      initContainers:
+        - name: test
+          image: alpine
+          command:
+            - touch
+          args:
+            - /data/redis/one
+      containers:
+        - name: redis
+          image: redis
+          volumeMounts:
+            - name: data
+              mountPath: /data/redis
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"

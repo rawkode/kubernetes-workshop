@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: simple-config
+data:
+  SOME_KEY: ABC1
+  ANOTHER_KEY: ABC2

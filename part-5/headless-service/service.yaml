@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: headless
+spec:
+  type: ClusterIP
+  clusterIP: None
+  selector:
+    service: headless
+  ports:
+    - port: 80

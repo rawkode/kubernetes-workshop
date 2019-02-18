@@ -1,0 +1,7 @@
+namespace: workshop
+
+commonLabels:
+  workshop: "kubernetes"
+
+resources:
+  - deployment.yaml

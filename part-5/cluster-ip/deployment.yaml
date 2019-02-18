@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cluster-ip
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      service: cluster-ip
+  template:
+    metadata:
+      labels:
+        service: cluster-ip
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80

@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hot-reload
+  labels:
+    name: hot-reload
+spec:
+  volumes:
+    - name: code
+      emptyDir: {}
+  initContainers:
+    - name: initial-clone
+      image: plugins/git
+      volumeMounts:
+        - name: code
+          mountPath: /code
+      command:
+        - ash
+      args:
+        - -c
+        - if [ ! -f /code/index.html ]; then git clone https://github.com/rawkode/beginner-html-site-styled.git /code; fi
+  containers:
+    - name: nginx
+      image: nginx
+      resources: {}
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: code
+          mountPath: /usr/share/nginx/html
+    - name: git
+      image: plugins/git
+      volumeMounts:
+        - name: code
+          mountPath: /code
+      command:
+        - ash
+      args:
+        - -c
+        - while true; do git pull && sleep 10; done
+      workingDir: /code
+      resources: {}
