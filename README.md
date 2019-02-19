@@ -1,5 +1,7 @@
 # Kubernetes Workshop
 
+This workshop is aimed at developers / users of Kubernetes, rather than Ops. For this reason, we assume you have a working Kubernetes setup. It will not cover StatefulSets or PV/PVCs (at-least for now).
+
 The examples in this repository are currently `PHP`, as I've delivered this workshop at multiple `PHP` conferences.
 
 Other languages will be added over time 😄
