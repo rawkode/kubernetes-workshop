@@ -1,23 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cluster-ip-2
+  name: broken
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      service: cluster-ip-2
+      app: broken
   template:
     metadata:
       labels:
-        service: cluster-ip-2
+        app: broken
     spec:
       containers:
         - name: nginx
-          image: httpd
+          image: nginx
           resources:
             limits:
-              memory: "128Mi"
+              memory: "10Mi"
               cpu: "500m"
           ports:
             - containerPort: 80

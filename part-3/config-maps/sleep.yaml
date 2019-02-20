@@ -2,22 +2,30 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: shell
+  namespace: workshop
 spec:
   volumes:
+    - name: contents-config
+      configMap:
+        name: contents
     - name: nginx-config
       configMap:
         name: nginx-config
   containers:
     - name: sleep
-      image: busybox
-      command:
-        - sleep
-      args:
-        - "100000"
+      image: nginx
       resources: {}
+      ports:
+        - containerPort: 81
       envFrom:
         - configMapRef:
             name: simple-config
       volumeMounts:
         - name: nginx-config
-          mountPath: /my-config-map
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d/my-web.conf
+          subPath: virtual-host.conf
+        - name: contents-config
+          mountPath: /var/www/html

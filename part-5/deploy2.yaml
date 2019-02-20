@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cluster-ip-2
+  name: httpd
+  namespace: workshop
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      service: cluster-ip-2
+      app: httpd
   template:
     metadata:
       labels:
-        service: cluster-ip-2
+        app: httpd
     spec:
       containers:
-        - name: nginx
+        - name: httpd
           image: httpd
           resources:
             limits:

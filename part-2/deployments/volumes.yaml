@@ -17,6 +17,9 @@ spec:
       initContainers:
         - name: test
           image: alpine
+          volumeMounts:
+            - name: data
+              mountPath: /data/redis
           command:
             - touch
           args:

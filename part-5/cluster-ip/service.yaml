@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cluster-ip
+  name: cluster-ip-2
 spec:
   type: ClusterIP
   selector:
-    service: cluster-ip
+    service: cluster-ip-2
   ports:
     - port: 80

@@ -1,22 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: httpd
+  name: sleep
 spec:
   selector:
     matchLabels:
-      app: httpd
+      app: sleep
   template:
     metadata:
       labels:
-        app: httpd
+        app: sleep
     spec:
       containers:
-        - name: apache
-          image: httpd
+        - name: sleep
+          image: alpine:3.7
+          command:
+            - sleep
+          args:
+            - "100000"
           resources:
             limits:
-              memory: "1Mi"
+              memory: "128Mi"
               cpu: "500m"
-          ports:
-            - containerPort: 80

@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cluster-ip-2
+  name: nginx
+  namespace: k8sw
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      service: cluster-ip-2
+      app: nginx
   template:
     metadata:
       labels:
-        service: cluster-ip-2
+        app: nginx
     spec:
       containers:
         - name: nginx
-          image: httpd
+          image: nginx
           resources:
             limits:
               memory: "128Mi"

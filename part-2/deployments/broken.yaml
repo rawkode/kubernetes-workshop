@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: broken
+  name: httpd
 spec:
   selector:
     matchLabels:
-      app: broken
+      app: httpd
   template:
     metadata:
       labels:
-        app: broken
+        app: httpd
     spec:
       containers:
-        - name: nginx
-          image: nginx
+        - name: apache
+          image: httpd
           resources:
             limits:
-              memory: "10Mi"
+              memory: "4Mi"
               cpu: "500m"
           ports:
             - containerPort: 80
