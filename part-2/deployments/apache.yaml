@@ -16,7 +16,7 @@ spec:
           image: httpd
           resources:
             limits:
-              memory: "1Mi"
+              memory: "20Mi"
               cpu: "500m"
           ports:
             - containerPort: 80

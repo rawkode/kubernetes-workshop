@@ -9,14 +9,14 @@ spec:
   template:
     metadata:
       labels:
-        app: broken
+        application: broken
     spec:
       containers:
         - name: nginx
           image: nginx
           resources:
             limits:
-              memory: "10Mi"
+              memory: "4Mi"
               cpu: "500m"
           ports:
             - containerPort: 80
