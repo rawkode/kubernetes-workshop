@@ -1,23 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: httpd
+  name: nginx
 spec:
-  replicas: 10
   selector:
     matchLabels:
-      app: httpd
+      app: myapp
   template:
     metadata:
       labels:
-        app: httpd
+        app: myapp
     spec:
       containers:
-        - name: apache
-          image: httpd
+        - name: nginx
+          image: nginx:1.16
           resources:
             limits:
-              memory: "20Mi"
+              memory: "128Mi"
               cpu: "500m"
           ports:
             - containerPort: 80

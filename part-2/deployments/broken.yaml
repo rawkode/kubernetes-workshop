@@ -9,7 +9,7 @@ spec:
   template:
     metadata:
       labels:
-        application: broken
+        app: broken
     spec:
       containers:
         - name: nginx
