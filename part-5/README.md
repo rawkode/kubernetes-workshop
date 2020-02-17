@@ -18,7 +18,7 @@ You will learn:
 
 ### Solo Exercises
 
-1. Deploy `functions/node-info` as a deployment with 5 replicas
+1. Deploy `functions/node-info` as a deployment with 5 replicas (Port 8080)
 2. Create a `ClusterIP` service for the deployment
 3. Port forward service to localhost and curl away!
 4. Create a `NodePort` service for the deployment

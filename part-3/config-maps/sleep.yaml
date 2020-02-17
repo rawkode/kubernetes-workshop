@@ -7,11 +7,19 @@ spec:
     - name: nginx-config
       configMap:
         name: nginx-config
+    - name: content
+      configMap:
+        name: content
   containers:
     - name: sleep
       image: nginx:1.17.3
       resources: {}
+      envFrom:
+        - configMapRef:
+            name: content
       volumeMounts:
+        - name: content
+          mountPath: /var/www/html
         - name: nginx-config
           mountPath: /etc/nginx/nginx.conf
           subPath: nginx.conf

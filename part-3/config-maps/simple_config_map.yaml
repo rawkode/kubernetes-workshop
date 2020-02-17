@@ -4,4 +4,4 @@ metadata:
   name: simple-config
 data:
   SOME_KEY: ABC1
-  ANOTHER_KEY: ABC2
+  ANOTHER_KEY: ABC3

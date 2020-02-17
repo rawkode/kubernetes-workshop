@@ -4,6 +4,7 @@ metadata:
   name: myapp
 spec:
   minReadySeconds: 10
+  replicas: 10
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -20,9 +21,5 @@ spec:
       containers:
         - name: myapp
           image: nginx
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
           ports:
             - containerPort: 80

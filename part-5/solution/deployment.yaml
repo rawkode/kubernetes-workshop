@@ -1,22 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: broken
+  name: nodeinfo
 spec:
+  replicas: 10
   selector:
     matchLabels:
-      app: broken
+      app: nodeinfo
   template:
     metadata:
       labels:
-        app: broken
+        app: nodeinfo
     spec:
       containers:
-        - name: nginx
-          image: nginx
+        - name: nodeinfo
+          image: functions/node-info
           resources:
             limits:
-              memory: "1Mi"
+              memory: "128Mi"
               cpu: "500m"
           ports:
-            - containerPort: 80
+            - containerPort: 8080

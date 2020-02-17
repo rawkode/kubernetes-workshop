@@ -1,22 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: broken
+  name: sleep
 spec:
   selector:
     matchLabels:
-      app: broken
+      app: sleep
+  replicas: 2
   template:
     metadata:
       labels:
-        app: broken
+        app: sleep
     spec:
       containers:
-        - name: nginx
-          image: nginx
+        - name: sleep
+          image: alpine:3.8
+          command:
+            - sleep
+            - "10"
           resources:
             limits:
-              memory: "1Mi"
+              memory: "128Mi"
               cpu: "500m"
-          ports:
-            - containerPort: 80
