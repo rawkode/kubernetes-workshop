@@ -26,17 +26,3 @@ data:
 
         include /etc/nginx/conf.d/*.conf;
     }
-  virtual-host.conf: |
-    server {
-            listen 81 default_server;
-            listen [::]:81 default_server;
-
-            root /var/www/html;
-            index index.html index.htm index.nginx-debian.html;
-
-            server_name _;
-
-            location / {
-                    try_files $uri $uri/ =404;
-            }
-    }

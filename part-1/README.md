@@ -5,7 +5,7 @@
 You will learn:
 
 - What a `Pod` is
-- How to create, update, and delete a pod
+- How to create, "update", and delete a pod
 - Exporting a pod to `JSON` and `YAML`
 - Port Forward traffic locally to your pod
 
@@ -14,6 +14,8 @@ You will learn:
 1. The anatomy of a Kubernetes manifest
 2. Introduction to `kubectl`
 3. Deploying the `sleep` pod
+4. Deploying the `httpd` pod
+5. Accessing `httpd`
 
 ### Solo Exercises
 

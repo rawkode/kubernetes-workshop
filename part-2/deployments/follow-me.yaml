@@ -1,19 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
+  name: follow-me
 spec:
   selector:
     matchLabels:
-      app: nginx
-  paused: true
+      app: follow-me
+  replicas: 2
   template:
     metadata:
       labels:
-        app: nginx
+        app: follow-me
     spec:
       containers:
-        - name: nginx
+        - name: follow-me
           image: nginx
-          ports:
-            - containerPort: 80

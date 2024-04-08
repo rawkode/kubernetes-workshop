@@ -1,7 +1,5 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata:
-  name: httpd
 spec:
   replicas: 10
   selector:
@@ -10,7 +8,7 @@ spec:
   template:
     metadata:
       labels:
-        app: httpd
+        application: httpd
     spec:
       containers:
         - name: apache

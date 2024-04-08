@@ -1,35 +1,30 @@
 # Kubernetes Workshop
 
-## Part 6
+## Part 7
 
 You will learn:
 
-- What the `Ambassador` pattern is
-- What the `Sidecar` pattern is
-- What the `Adapter` pattern is
+- Introduction to `RBAC`
+  - `Role`
+  - `ServiceAccount`
+  - `RoleBinding` and `ClusterRoleBinding`
 
 ### Follow Along Exercises
 
-1. Deploy `fpm` with nginx as an `Ambassador`
-2. Deploy `nginx` with `git` as a `Sidecar`
+1. List all Roles
+2. List all ServiceAccounts
+3. List all RoleBindings
+4. List all ClusterRoleBindings
+5. In-Cluster `kubectl`:
+   1. `kubectl run --rm -i --tty --restart=Never kubectl --image=bitnami/kubectl -- get pods`
+   2. `kubectl run --rm -i --tty --restart=Never kubectl --image=bitnami/kubectl --command -- bash`
 
 ### Solo Exercises
 
-#### Adapter Pattern
-
-Our `adapter` pod writes a random file to `/shared/output.txt` every 5 seconds
-
-Add another container that will append this to a JSON document at `/shared/output.json`
-
-**Example**
-
-```json
-# /shared/output.json
-{"output": 45858}
-{"output": 25}
-{"output": 1378}
-```
-
-#### FaaS Over Web
-
-If we have time, feel free to try our [FaaS Over Web](../part-x/faas-over-web/README.md) extra exercise.
+1. Create a `Developer` role, in `default` namespace, with permissions:
+   1. Read Pods in `default` namespace
+2. Create a `Developer` service account in `default` namespace
+3. Create `Developer` role binding in `default` namespace
+4. Create `kubectl` pod that uses this service account:
+   1. Run `kubectl get pods` (This should work)
+   2. Run `kubectl get pods -n kube-system` (This should fail)

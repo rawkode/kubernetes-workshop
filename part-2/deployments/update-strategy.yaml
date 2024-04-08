@@ -6,10 +6,7 @@ spec:
   minReadySeconds: 10
   replicas: 10
   strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 10%
-      maxSurge: 10%
+    type: Recreate
   selector:
     matchLabels:
       app: myapp
@@ -22,4 +19,4 @@ spec:
         - name: myapp
           image: nginx
           ports:
-            - containerPort: 80
+            - containerPort: 8080

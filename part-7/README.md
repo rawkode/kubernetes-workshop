@@ -1,30 +1,60 @@
 # Kubernetes Workshop
 
-## Part 7
+## Part 8
 
 You will learn:
 
-- Introduction to `RBAC`
-  - `Role`
-  - `ServiceAccount`
-  - `RoleBinding` and `ClusterRoleBinding`
+- Introduction to `Helm`
+- Introduction to `Helm Hub`
 
 ### Follow Along Exercises
 
-1. List all Roles
-2. List all ServiceAccounts
-3. List all RoleBindings
-4. List all ClusterRoleBindings
-5. In-Cluster `kubectl`:
-   1. `kubectl run --rm -i --tty --restart=Never kubectl --image=bitnami/kubectl -- get pods`
-   2. `kubectl run --rm -i --tty --restart=Never kubectl --image=bitnami/kubectl --command -- bash`
+1. Initialising Helm
+2. Deploying PostgreSQL
+3. Upgrading PostgreSQL
+4. Deleting PostgreSQL
+5. Purging PostgreSQL
 
 ### Solo Exercises
 
-1. Create a `Developer` role, in `default` namespace, with permissions:
-   1. Pods in `default` namespace
-2. Create a `PHPUK` service account in `default` namespace
-3. Create PHPUKDeveloper role binding in `default` namespace
-4. Create `kubectl` pod that uses this service account:
-   1. Run `kubectl get pods` (This should work)
-   2. Run `kubectl get pods -n kube-system` (This should fail)
+1. Deploy the following with Helm:
+   1. Drone (Stable)
+   2. CouchDB (Incubator)
+   3. Contour (Rimusz)
+
+### Bonus Exercises
+
+1. Write your own Helm chart to deploy your own application
+    1. If you don't have one, deploy `payloadcms`
+
+### Command Help
+
+#### Create, or Update, Helm Release
+
+```shell
+helm upgrade --install -f values.yaml release_name chart_repository/chart_name
+```
+
+#### Deleting a Helm Release
+
+```shell
+helm delete release_name
+```
+
+#### Purging a Helm Release
+
+```shell
+helm delete --purge release_name
+```
+
+#### Add New Repository
+
+```shell
+helm repo add repository_name repository_uri
+```
+
+#### Creating a New Chart
+
+```shell
+helm create
+```

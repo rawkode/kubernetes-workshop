@@ -1,55 +1,31 @@
 # Kubernetes Workshop
 
-## Part 8
+## Part 9
 
 You will learn:
 
-- Introduction to `Helm`
-- Introduction to `Helm Hub`
+- Introduction to `Kustomize`
 
 ### Follow Along Exercises
 
-1. Initialising Helm
-2. Deploying MariaDB
-3. Upgrading MariaDB
-4. Deleting MariaDB
-5. Purging MariaDB
+1. Deploy `base`
+2. Deploy `prod`
 
 ### Solo Exercises
 
-1. Deploy the following with Helm:
-   1. Drone (Stable)
-   2. CouchDB (Incubator)
-   3. Contour (Rimusz)
+1. Adopt Kustomize for your own application
+	1. If you don't have one, deploy `payloadcms`
 
 ### Command Help
 
-#### Install `helm` into Cluster
+#### Generate Manifests with Kustomize
 
 ```shell
-helm init
+kustomize build ./directory
 ```
 
-#### Create, or Update, Helm Release
+#### Apply Manifests with Kustomize
 
 ```shell
-helm upgrade --install -f values.yaml release_name chart_repository/chart_name
-```
-
-#### Deleting a Helm Release
-
-```shell
-helm delete release_name
-```
-
-#### Purging a Helm Release
-
-```shell
-helm delete --purge release_name
-```
-
-#### Add New Repository
-
-```shell
-helm repo add repository_name repository_uri
+kustomize build ./directory | kubectl -f -
 ```
